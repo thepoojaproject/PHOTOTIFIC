@@ -148,7 +148,7 @@ processBtn.addEventListener('click', () => {
 });
 </script>
 <footer style="margin-top: 30px; color: #555; font-size: 14px;">
-  Made with ❤ by Armeen
+  Made with ❤ By Armeen
 </footer>
 
 
