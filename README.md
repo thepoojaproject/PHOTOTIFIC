@@ -13,8 +13,8 @@
         
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background: #094d58;
-            color: white;
+            background: #ffffff;
+            color: #333333;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -35,23 +35,24 @@
         }
         
         .upload-area {
-            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border: 2px dashed #cccccc;
             border-radius: 12px;
             padding: 40px 20px;
             margin-bottom: 25px;
             cursor: pointer;
             transition: all 0.3s;
+            background: #f8f9fa;
         }
         
         .upload-area:hover {
-            border-color: rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: #4db8c9;
+            background: #f0f8fa;
         }
         
         .upload-icon {
             font-size: 40px;
             margin-bottom: 10px;
-            opacity: 0.7;
+            opacity: 0.6;
         }
         
         .controls {
@@ -69,20 +70,27 @@
         input, select, button {
             padding: 12px 15px;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            border: 1px solid #dddddd;
+            background: #ffffff;
+            color: #333333;
             font-size: 15px;
             width: 100%;
+            transition: all 0.2s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4db8c9;
+            box-shadow: 0 0 0 2px rgba(77, 184, 201, 0.1);
         }
         
         input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            color: #999999;
         }
         
         select {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 12px;
@@ -94,6 +102,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
+            color: white;
         }
         
         button:hover {
@@ -101,8 +110,9 @@
         }
         
         button:disabled {
-            background: rgba(255, 255, 255, 0.2);
+            background: #cccccc;
             cursor: not-allowed;
+            color: #999999;
         }
         
         .preview {
@@ -114,14 +124,15 @@
             max-width: 100%;
             max-height: 300px;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eeeeee;
         }
         
         .download {
             display: none;
             margin-top: 20px;
             padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #4db8c9;
             border-radius: 8px;
             text-decoration: none;
             color: white;
@@ -130,18 +141,19 @@
         }
         
         .download:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: #3aa5b7;
         }
         
         footer {
             margin-top: 40px;
             font-size: 14px;
-            opacity: 0.7;
+            color: #666666;
         }
         
         .heartbeat {
             animation: heartbeat 1.5s ease-in-out infinite both;
             display: inline-block;
+            color: #e74c3c;
         }
         
         @keyframes heartbeat {
@@ -176,6 +188,7 @@
 <body>
     <div class="container">
         <img src="https://i.ibb.co/m7ykF1Y/Photorific.png" alt="Photorific" class="logo" border="0">
+        
         <div class="upload-area" id="uploadArea">
             <div class="upload-icon">📁</div>
             <p>Click to upload image</p>
