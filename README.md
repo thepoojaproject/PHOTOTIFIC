@@ -176,7 +176,6 @@
 <body>
     <div class="container">
         <img src="https://i.ibb.co/m7ykF1Y/Photorific.png" alt="Photorific" class="logo" border="0">
-        
         <div class="upload-area" id="uploadArea">
             <div class="upload-icon">📁</div>
             <p>Click to upload image</p>
