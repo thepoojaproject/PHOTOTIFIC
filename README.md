@@ -11,16 +11,47 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --border-color: #dddddd;
+            --input-bg: #ffffff;
+            --upload-bg: #f8f9fa;
+            --upload-hover: #f0f8fa;
+            --primary-color: #4db8c9;
+            --primary-hover: #3aa5b7;
+            --disabled-color: #cccccc;
+            --footer-color: #666666;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --heart-color: #e74c3c;
+        }
+        
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --border-color: #444444;
+            --input-bg: #2d2d2d;
+            --upload-bg: #2a2a2a;
+            --upload-hover: #333333;
+            --primary-color: #4db8c9;
+            --primary-hover: #3aa5b7;
+            --disabled-color: #555555;
+            --footer-color: #999999;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --heart-color: #e74c3c;
+        }
+        
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background: #ffffff;
-            color: #333333;
+            background: var(--bg-color);
+            color: var(--text-color);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            transition: all 0.3s ease;
         }
         
         .container {
@@ -29,24 +60,50 @@
             text-align: center;
         }
         
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
         .logo {
-            width: 220px;
-            margin-bottom: 30px;
+            width: 180px;
+        }
+        
+        .theme-toggle {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--upload-hover);
+            transform: scale(1.1);
         }
         
         .upload-area {
-            border: 2px dashed #cccccc;
+            border: 2px dashed var(--border-color);
             border-radius: 12px;
             padding: 40px 20px;
             margin-bottom: 25px;
             cursor: pointer;
             transition: all 0.3s;
-            background: #f8f9fa;
+            background: var(--upload-bg);
         }
         
         .upload-area:hover {
-            border-color: #4db8c9;
-            background: #f0f8fa;
+            border-color: var(--primary-color);
+            background: var(--upload-hover);
         }
         
         .upload-icon {
@@ -70,9 +127,9 @@
         input, select, button {
             padding: 12px 15px;
             border-radius: 8px;
-            border: 1px solid #dddddd;
-            background: #ffffff;
-            color: #333333;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-color);
             font-size: 15px;
             width: 100%;
             transition: all 0.2s;
@@ -80,24 +137,28 @@
         
         input:focus, select:focus {
             outline: none;
-            border-color: #4db8c9;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 2px rgba(77, 184, 201, 0.1);
         }
         
         input::placeholder {
-            color: #999999;
+            color: var(--footer-color);
         }
         
         select {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666666' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 12px;
         }
         
+        .dark-mode select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23999999' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        }
+        
         button {
-            background: #4db8c9;
+            background: var(--primary-color);
             border: none;
             font-weight: 600;
             cursor: pointer;
@@ -106,13 +167,13 @@
         }
         
         button:hover {
-            background: #3aa5b7;
+            background: var(--primary-hover);
         }
         
         button:disabled {
-            background: #cccccc;
+            background: var(--disabled-color);
             cursor: not-allowed;
-            color: #999999;
+            color: var(--footer-color);
         }
         
         .preview {
@@ -124,15 +185,15 @@
             max-width: 100%;
             max-height: 300px;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #eeeeee;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border: 1px solid var(--border-color);
         }
         
         .download {
             display: none;
             margin-top: 20px;
             padding: 12px 20px;
-            background: #4db8c9;
+            background: var(--primary-color);
             border-radius: 8px;
             text-decoration: none;
             color: white;
@@ -141,19 +202,19 @@
         }
         
         .download:hover {
-            background: #3aa5b7;
+            background: var(--primary-hover);
         }
         
         footer {
             margin-top: 40px;
             font-size: 14px;
-            color: #666666;
+            color: var(--footer-color);
         }
         
         .heartbeat {
             animation: heartbeat 1.5s ease-in-out infinite both;
             display: inline-block;
-            color: #e74c3c;
+            color: var(--heart-color);
         }
         
         @keyframes heartbeat {
@@ -187,7 +248,12 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://i.ibb.co/m7ykF1Y/Photorific.png" alt="Photorific" class="logo" border="0">
+        <div class="header">
+            <img src="https://i.ibb.co/m7ykF1Y/Photorific.png" alt="Photorific" class="logo" border="0">
+            <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+                <span id="themeIcon">🌙</span>
+            </button>
+        </div>
         
         <div class="upload-area" id="uploadArea">
             <div class="upload-icon">📁</div>
@@ -238,10 +304,36 @@
         const downloadLink = document.getElementById('downloadLink');
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
 
         let img = new Image();
         let originalWidth = 0;
         let originalHeight = 0;
+        let isDarkMode = false;
+
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            
+            if (isDarkMode) {
+                themeIcon.textContent = '☀️';
+            } else {
+                themeIcon.textContent = '🌙';
+            }
+            
+            // Save preference to localStorage
+            localStorage.setItem('darkMode', isDarkMode);
+        });
+
+        // Check for saved theme preference
+        const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (savedDarkMode) {
+            isDarkMode = true;
+            document.body.classList.add('dark-mode');
+            themeIcon.textContent = '☀️';
+        }
 
         // Upload area click handler
         uploadArea.addEventListener('click', () => {
